@@ -24,3 +24,5 @@ and those layers will access in the service layer, all the logics and validation
 4 - Web Application Project - This is the Presentation layer of the application as it design in the MVC Framework so this Layer will communicates with the service layer and data
 will be displayed in this layer.
 
+
+For User Authentication and Authorization we are using ASP.Net Identity.
