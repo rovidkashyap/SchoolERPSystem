@@ -1,0 +1,282 @@
+﻿@model SchoolERPSystem.Web.Areas.Admin.Models.StaffProfileViewModel
+
+@{
+    ViewBag.Title = "profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Human Resource
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#">Human Resource</a></li>
+                <li class="active"><a href="#" onclick="@("window.location.href='" + Url.Action("Index", "Staff", new { area = "admin"}) + "'");">Staff Directory</a></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+                <div class="col-md-3">
+
+                    <!-- Profile Image -->
+                    <div class="box box-primary">
+                        <div class="box-body box-profile">
+                            @if (Model.GenderName == "Male")
+                            {
+                                <img class="profile-user-img img-responsive img-circle bg-blue" src="~/ThemeContent/dist/img/male-avatar.png" alt="User Profile picture" />
+                            }
+                            else if (Model.GenderName == "Female")
+                            {
+                                <img class="profile-user-img img-responsive img-circle bg-blue" src="~/ThemeContent/dist/img/female-avatar.png" alt="User Profile picture" />
+                            }
+                            else
+                            {
+                                <img class="profile-user-img img-responsive img-circle bg-blue" src="~/ThemeContent/dist/img/male-avatar.png" alt="User profile picture" />
+                            }
+                            
+
+                            <h3 class="profile-username text-center">
+                                @{var fullName = Model.FirstName + " " + Model.LastName;
+                                    @Html.DisplayFor(modelItem => fullName)
+                                }
+                            </h3>
+
+                            <p class="text-muted text-center">@Html.DisplayFor(model => model.UserRoles)</p>
+
+                            <ul class="list-group list-group-unbordered">
+                                <li class="list-group-item">
+                                    <b>@Html.DisplayNameFor(model => model.StaffId)</b> <a class="pull-right">@Html.DisplayFor(model => model.StaffId)</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.DisplayNameFor(model => model.UserRoles)</b> <a class="pull-right">@Html.DisplayFor(model => model.UserRoles)</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.DisplayNameFor(model => model.DesignationName)</b> <a class="pull-right">@Html.DisplayFor(model => model.DesignationName)</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.DisplayNameFor(model => model.DepartmentName)</b> <a class="pull-right">@Html.DisplayFor(model => model.DepartmentName)</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.DisplayName("EPF No")</b> <a class="pull-right">@Html.DisplayFor(model => model.StaffEPFNo)</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.DisplayName("Basic Salary")</b> <a class="pull-right">@Html.DisplayFor(model => model.BasicSalary)</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.DisplayName("Contract Type")</b> <a class="pull-right">@Html.DisplayFor(model => model.ContractTypeName)</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.DisplayName("Work Shift")</b> <a class="pull-right">@Html.DisplayFor(model => model.WorkShift)</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.DisplayNameFor(model => model.DateOfJoining)</b> <a class="pull-right">@Html.DisplayFor(model => model.DateOfJoining)</a>
+                                </li>
+                            </ul>
+
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                    
+                </div>
+                <!-- /.col -->
+                <div class="col-md-9">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
+                            <li><a href="#payroll" data-toggle="tab">Payroll</a></li>
+                            <li><a href="#leaves" data-toggle="tab">Leaves</a></li>
+                            <li><a href="#attendance" data-toggle="tab">Attendance</a></li>
+                            <li><a href="#documents" data-toggle="tab">Documents</a></li>
+
+                            <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-thumbs-o-down"></i></a></li>
+                            <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-key"></i></a></li>
+                            <li class="pull-right">
+                                <a href="#" class="text-muted">
+                                    <i class="fa fa-pencil" onclick="@("window.location.href='" + Url.Action("Edit", "Staff", new { area = "admin", id = Model.ApplicationUserId }) + "'");"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+
+                            <div class="active tab-pane" id="profile">
+
+                                <!-- Personal Data -->
+                                <div class="">
+
+                                    <div class="">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td style="width:50%">@Html.DisplayNameFor(model => model.Mobile)</td>
+                                                <td style="width:50%">@Html.DisplayFor(model => model.Mobile)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>@Html.DisplayNameFor(model => model.EmergencyContact)</td>
+                                                <td>@Html.DisplayFor(model => model.EmergencyContact)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>@Html.DisplayNameFor(model => model.Email)</td>
+                                                <td>@Html.DisplayFor(model => model.Email)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>@Html.DisplayNameFor(model => model.GenderName)</td>
+                                                <td>@Html.DisplayFor(model => model.GenderName)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>@Html.DisplayNameFor(model => model.DateOfBirth)</td>
+                                                <td>@Html.DisplayFor(model => model.DateOfBirth)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>@Html.DisplayNameFor(model => model.MaritalStatusName)</td>
+                                                <td>@Html.DisplayFor(model => model.MaritalStatusName)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>@Html.DisplayNameFor(model => model.FatherName)</td>
+                                                <td>@Html.DisplayFor(model => model.FatherName)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>@Html.DisplayNameFor(model => model.MotherName)</td>
+                                                <td>@Html.DisplayFor(model => model.MotherName)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>@Html.DisplayNameFor(model => model.Qualification)</td>
+                                                <td>@Html.DisplayFor(model => model.Qualification)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>@Html.DisplayNameFor(model => model.WorkExperience)</td>
+                                                <td>@Html.DisplayFor(model => model.WorkExperience) Yrs</td>
+                                            </tr>
+                                            <td>@Html.DisplayNameFor(model => model.Note)</td>
+                                            <td>@Html.DisplayFor(model => model.Note)</td>
+                                        </table>
+                                    </div>
+
+                                </div>
+                                <!-- Personal Data -->
+                                <!-- Address Link -->
+                                <div class="">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title"><b>Address</b></h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td style="width:50%">@Html.DisplayNameFor(model => model.CurrentAddress)</td>
+                                                <td style="width:50%">@Html.DisplayFor(model => model.CurrentAddress)</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:50%">@Html.DisplayNameFor(model => model.PermanentAddress)</td>
+                                                <td style="width:50%">@Html.DisplayFor(model => model.PermanentAddress)</td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                                <!-- Address Link -->
+                                <!-- Bank Account Details Link -->
+                                <div class="">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title"><b>Bank Account Details</b></h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td style="width:50%">@Html.DisplayName("Account Title")</td>
+                                                <td style="width:50%">@Html.DisplayFor(model => model.AccountTitle)</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:50%">@Html.DisplayName("Bank Name")</td>
+                                                <td style="width:50%">@Html.DisplayFor(model => model.BankName)</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:50%">@Html.DisplayName("Bank Branch Name")</td>
+                                                <td style="width:50%">@Html.DisplayFor(model => model.BankBranchName)</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:50%">@Html.DisplayName("Bank Account Number")</td>
+                                                <td style="width:50%">@Html.DisplayFor(model => model.BankAccountNumber)</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:50%">@Html.DisplayName("IFSC Code")</td>
+                                                <td style="width:50%">@Html.DisplayFor(model => model.IFSCCode)</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                                <!-- Bank Account Details Link -->
+                                <!-- Social Media Link -->
+                                <div class="">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title"><b>Social Media Link</b></h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td style="width:50%"><a href="#">@Html.DisplayNameFor(model => model.FacebookURL)</a></td>
+                                                <td style="width:50%"><a href="#">@Html.DisplayFor(model => model.FacebookURL)</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:50%"><a href="#">@Html.DisplayNameFor(model => model.TwitterURL)</a></td>
+                                                <td style="width:50%"><a href="#">@Html.DisplayFor(model => model.TwitterURL)</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:50%"><a href="#">@Html.DisplayNameFor(model => model.LinkedInURL)</a></td>
+                                                <td style="width:50%"><a href="#">@Html.DisplayFor(model => model.LinkedInURL)</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:50%"><a href="#">@Html.DisplayNameFor(model => model.InstagramURL)</a></td>
+                                                <td style="width:50%"><a href="#">@Html.DisplayFor(model => model.InstagramURL)</a></td>
+                                        </table>
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                                <!-- Social Media Link -->
+
+                            </div>
+                            <!-- /Profile tab-pane -->
+
+                            <div class="tab-pane" id="payroll">
+                                <!-- The timeline -->
+
+                            </div>
+                            <!-- /Payroll tab-pane -->
+
+                            <div class="tab-pane" id="leaves">
+
+                            </div>
+                            <!-- /Leaves tab-pane -->
+
+                            <div class="tab-pane" id="attendance">
+
+                            </div>
+                            <!-- /Attendance tab-pane -->
+
+                            <div class="tab-pane" id="documents">
+
+                            </div>
+                            <!-- /Documents tab-pane -->
+
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+                    <!-- /.nav-tabs-custom -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+        </section>
+        <!-- /.content -->
+    </div>

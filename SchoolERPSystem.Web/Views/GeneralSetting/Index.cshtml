@@ -1,0 +1,158 @@
+﻿@model IEnumerable<SchoolERPSystem.Web.Models.GeneralSettingViewModel.GeneralSettingViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>System Settings</h1>
+            </section>
+
+            <section class="content">
+                <div class="row">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                    <div class="col-md-4">
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Logo</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+
+                                
+
+                            </div>
+                            <!-- /.box-body -->
+                            
+                        </div>
+                        
+                    </div>
+                    <!-- /.col -->
+                <div class="col-md-8">
+                    @foreach (var item in Model)
+                    {
+                        <div class="box box-info">
+                            <div class="box-header">
+                                <h3 class="box-title"><i class="fa fa-gear"></i>&nbsp;&nbsp;General Setting</h3>
+
+                                <div class="box-tools">
+                                    @*<button class="btn btn-block btn-primary" onclick="@("window.location.href='" + Url.Action("Edit", "GeneralSetting", new { id = item.Id }) + "'");">
+                                        <i class="fa fa-plus-square"></i>&nbsp;&nbsp; Edit
+                                    </button>*@
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                                </div>
+                            </div>
+
+                            <!-- /.box-header -->
+                            <div class="box-body no-padding">
+                                <table class="table">
+                                    <tr>
+                                        <th style="width: 10px"></th>
+                                        <th>@Html.DisplayNameFor(model => model.SchoolName)</th>
+                                        <td>@Html.DisplayFor(modelItem => item.SchoolName)</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width: 10px"></th>
+                                        <th>@Html.DisplayNameFor(model => model.SchoolAddress)</th>
+                                        <td>@Html.DisplayFor(modelItem => item.SchoolAddress)</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width: 10px"></th>
+                                        <th>@Html.DisplayNameFor(model => model.PhoneNumber1)</th>
+                                        <td>@Html.DisplayFor(modelItem => item.PhoneNumber1)</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width: 10px"></th>
+                                        <th>@Html.DisplayNameFor(model => model.PhoneNumber2)</th>
+                                        <td>@Html.DisplayFor(modelItem => item.PhoneNumber2)</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width: 10px"></th>
+                                        <th>@Html.DisplayNameFor(model => model.SchoolEmail)</th>
+                                        <td>@Html.DisplayFor(modelItem => item.SchoolEmail)</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width: 10px"></th>
+                                        <th>@Html.DisplayNameFor(model => model.SchoolCode)</th>
+                                        <td>@Html.DisplayFor(modelItem => item.SchoolCode)</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width: 10px"></th>
+                                        <th>@Html.DisplayNameFor(model => model.SessionName)</th>
+                                        <td>@Html.DisplayFor(modelItem => item.SessionName)</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width: 10px"></th>
+                                        <th>@Html.DisplayNameFor(model => model.SessionStartMonth)</th>
+                                        <td>@Html.DisplayFor(modelItem => item.SessionStartMonth)</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width: 10px"></th>
+                                        <th>@Html.DisplayNameFor(model => model.LanguageName)</th>
+                                        <td>@Html.DisplayFor(modelItem => item.LanguageName)</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width: 10px"></th>
+                                        <th>@Html.DisplayNameFor(model => model.TimezoneName)</th>
+                                        <td>@Html.DisplayFor(modelItem => item.TimezoneName)</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width: 10px"></th>
+                                        <th>@Html.DisplayNameFor(model => model.CurrencyName)</th>
+                                        <td>@Html.DisplayFor(modelItem => item.CurrencyName)</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width: 10px"></th>
+                                        <th>@Html.DisplayNameFor(model => model.CurrencySymbol)</th>
+                                        <td>@Html.DisplayFor(modelItem => item.CurrencySymbol)</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width: 10px"></th>
+                                        <th>@Html.DisplayNameFor(model => model.FeesDueDays)</th>
+                                        <td>@Html.DisplayFor(modelItem => item.FeesDueDays)</td>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!-- /.box-body -->
+
+                        </div>
+                    }
+                </div>
+                    <!-- /.col -->
+                    }
+                </div>
+                <!-- /.row -->
+                
+            </section>
+
+            
+
+        </div>
+    </div>
+    <!-- ./wrapper -->
+
+</body>
+</html>
+
+
+

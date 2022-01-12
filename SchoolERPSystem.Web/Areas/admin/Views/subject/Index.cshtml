@@ -1,0 +1,88 @@
+﻿@model SchoolERPSystem.Web.Areas.admin.Models.AcademicsViewModel.SubjectViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            <i class="fa fa-mortar-board"></i>
+            Academics
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+
+            <div class="col-md-4">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="col-md-12">
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Add Subjects</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+
+                            <form class="form-horizontal">
+                                <div class="box-body">
+
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.SubjectName, htmlAttributes: new { @class = "control-label" })
+                                        
+                                            @Html.EditorFor(model => model.SubjectName, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                            @Html.ValidationMessageFor(model => model.SubjectName, "", new { @class = "text-danger" })
+                                       
+                                    </div>
+
+                                    
+                                    <div class="form-group">
+                                        <div class="radio">
+                                            <label>
+                                                @Html.RadioButtonFor(model => model.SubjectType, "Theory", "Theory") Theory
+                                            </label>
+                                            &nbsp;&nbsp;&nbsp;
+                                            <label>
+                                                @Html.RadioButtonFor(model => model.SubjectType, "Practical", "Practical") Practical
+                                            </label>
+                                            @Html.ValidationMessageFor(model => model.SubjectType, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.SubjectCode, htmlAttributes: new { @class = "control-label" })
+                                        
+                                            @Html.EditorFor(model => model.SubjectCode, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                            @Html.ValidationMessageFor(model => model.SubjectCode, "", new { @class = "text-danger" })
+                                       
+                                    </div>
+
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <input type="submit" value="Save" class="btn btn-info pull-right" />
+                                    <!-- /.box-footer -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-md-8">
+                @{ Html.RenderAction("List", "subject", new { area = "Admin" }); }
+            </div>
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>

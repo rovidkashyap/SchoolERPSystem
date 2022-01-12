@@ -1,0 +1,172 @@
+﻿@model SchoolERPSystem.Web.Areas.Admin.Models.StaffProfileViewModel
+@using Microsoft.AspNet.Identity
+
+@{
+    /**/
+
+    ViewBag.Title = "ERPSchool Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ERPSchool - Dashboard</title>
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+
+
+        <!-- =============================================== -->
+        <!-- Left side column. contains the sidebar -->
+        <!-- =============================================== -->
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Dashboard
+                    <small>Verson 1.0.01</small>
+                </h1>
+                <!--<ol class="breadcrumb">
+                  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                  <li><a href="#">Examples</a></li>
+                  <li class="active">Blank page</li>
+                </ol>-->
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+
+                <div class="row">
+                    <!-- Left col -->
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-4">
+                                    <div class="info-box">
+                                        <span class="info-box-icon bg-yellow"><i class="fa fa-money"></i></span>
+
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">TOTAL STUDENTS</span>
+                                            <span class="info-box-number">@Model.studentCount</span>
+                                        </div>
+                                        <!-- /.info-box-content -->
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="info-box">
+                                        <span class="info-box-icon bg-green"><i class="fa fa-id-card"></i></span>
+
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">Monthly Fees Collection</span>
+                                            <span class="info-box-number">0</span>
+                                        </div>
+                                        <!-- /.info-box-content -->
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="info-box">
+                                        <span class="info-box-icon bg-red"><i class="fa fa-user"></i></span>
+
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">MONTHLY EXPENSES</span>
+                                            <span class="info-box-number">0</span>
+                                        </div>
+                                        <!-- /.info-box-content -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+
+                    <div class="col-md-3">
+                        <!-- Info Boxes Style 2 -->
+                        <div class="info-box bg-light-blue-gradient">
+                            <span class="info-box-icon"><i class="fa fa-user-secret"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-number">TEACHER</span>
+                                <span class="info-box-number">@Model.teacherCount</span>
+
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                        <div class="info-box bg-yellow">
+                            <span class="info-box-icon"><i class="fa fa-user-secret"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-number">ACCOUNTANT</span>
+                                <span class="info-box-number">@Model.accountantCount</span>
+
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                        <div class="info-box bg-green">
+                            <span class="info-box-icon"><i class="fa fa-user-secret"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-number">LIBRARIAN</span>
+                                <span class="info-box-number">@Model.librarianCount</span>
+
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                        <div class="info-box bg-yellow-active">
+                            <span class="info-box-icon"><i class="fa fa-user-secret"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-number">RECEPTIONIST</span>
+                                <span class="info-box-number">@Model.receptionistCount</span>
+
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                        <div class="info-box bg-red">
+                            <span class="info-box-icon"><i class="fa fa-user-secret"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-number">SUPER ADMIN</span>
+                                <span class="info-box-number">@Model.superadminCount</span>
+
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.box -->
+
+                        <div class="info-box bg-green-gradient">
+                            <span class="info-box-icon"><i class="fa fa-user-secret"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-number">ADMIN</span>
+                                <span class="info-box-number">@Model.adminCount</span>
+
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- Add the sidebar's background. This div must be placed
+             immediately after the control sidebar -->
+
+    </div>
+    <!-- ./wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<SchoolERPSystem.Web.Areas.admin.Models.HRViewModel.StaffAttendanceViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            <i class="fa fa-mortar-board"></i>
+            Human Resource
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+
+            <div class="col-md-6">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="col-md-12">
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Staff Attendance</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            
+                               
+                        <div class="box-body no-padding">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>@Html.DisplayName("Staff ID")</th>
+                                    <th>@Html.DisplayName("Attendance")</th>
+                                    <th>@Html.DisplayName("Attendance Date")</th>
+                                    <th>@Html.DisplayName("Note")</th>
+                                    <th>@Html.DisplayName("Is Holiday")</th>
+                                </tr>
+                                @for (var i = 0; i < Model.Count(); i++)
+                                {
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                               
+                            
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+

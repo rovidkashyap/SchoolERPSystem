@@ -1,0 +1,177 @@
+﻿@model IEnumerable<SchoolERPSystem.Web.Areas.Admin.Models.StaffProfileViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1 class="pull-left">Human Resource</h1>
+                <div class="pull-right-container pull-right">
+                    <button class="btn btn-block btn-primary" onclick="@("window.location.href='" + Url.Action("create", "Staff", new { area = "admin" }) + "'");">
+                        <i class="fa fa-plus-square"></i>&nbsp;&nbsp; Add Staff
+                    </button>
+                    @*<i class="fa fa-plus-square"></i>
+                    <input type="submit" value="Add Staff" class="btn btn-block btn-primary" onclick="@("window.location.href='" + Url.Action("create", "Staff", new { area = "admin" }) + "'");" />*@
+
+                </div>
+            </section>
+            <br /><br />
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#gridview" data-toggle="tab"><i class="fa fa-newspaper-o"></i>&nbsp;&nbsp;Grid View</a></li>
+                                <li><a href="#listview" data-toggle="tab"><i class="fa fa-reorder"></i>&nbsp;&nbsp;List View</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="gridview">
+                                    <!-- Post -->
+                                    <div class="row" style="display:inline-table;overflow:hidden;">
+                                        <div class="col-lg-12 col-md-12">
+                                            @foreach (var item in Model)
+                                            {
+                                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                                    <div class="info-box">
+                                                        <a href="@Url.Action("profile", "Staff", new { area = "admin", id = item.ApplicationUserId })">
+                                                            <span class="info-box-icon bg-blue">
+                                                                @if (item.GenderName == "Male")
+                                                                {
+                                                                    <img src="~/ThemeContent/dist/img/male-avatar.png" height="80" />
+                                                                }
+                                                                else if (item.GenderName == "Female")
+                                                                {
+                                                                    <img src="~/ThemeContent/dist/img/female-avatar.png" height="80" />
+                                                                }
+                                                                else
+                                                                {
+                                                                    <img src="~/ThemeContent/dist/img/male-avatar.png" height="80" />
+                                                                }
+                                                            </span>
+                                                        </a>
+                                                        <div class="info-box-content">
+                                                            <span class="info-box-text">
+                                                                <b>
+                                                                    @{var fullName = item.FirstName + " " + item.LastName;
+                                                                        <a href="@Url.Action("profile", "Staff", new { area = "Admin", id = item.ApplicationUserId })">@Html.DisplayFor(modelItem => fullName)</a>
+                                                                    }
+                                                                </b>
+                                                                <br />
+
+                                                                <small style="font-weight:100;font-size:small">@Html.DisplayFor(modelItem => item.StaffId)</small>
+                                                                <br />
+                                                                <small style="font-weight:100;font-size:small">@Html.DisplayFor(modelItem => item.Mobile)</small>
+                                                                <br />
+                                                                <p style="font-weight:normal;text-transform:none;">@Html.DisplayFor(modelItem => item.UserRoles)</p>
+                                                            </span>
+                                                        </div>
+                                                        <!-- /.info-box-content -->
+                                                    </div>
+                                                </div>
+
+                                                <!-- /.info-box -->
+                                            }
+                                        </div>
+                                        </div>
+
+
+                                        <!-- /.post -->
+                                    </div>
+
+                                <!-- /.tab-pane -->
+                                <div class="tab-pane" id="listview">
+                                    <div class="box-tools">
+                                        <ul class="pagination pagination-sm no-margin pull-right">
+                                            <li><a href="#" id="printpdf"><span class="fa fa-file-pdf-o"></span></a></li>
+                                            <li><a href="#" onclick="PrintDiv('dvContents')"><span class="fa fa-print"></span></a></li>
+                                            <li><a href="#"><span class="fa fa-file-excel-o"></span></a></li>
+                                        </ul>
+                                    </div>
+                                    <br /><br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="box-body no-padding" id="dvContents">
+                                                <table class="table table-striped">
+                                                    <tr>
+                                                        <th>@Html.DisplayName("Staff ID")</th>
+                                                        <th>@Html.DisplayName("Name")</th>
+                                                        <th>@Html.DisplayName("Role")</th>
+                                                        <th>@Html.DisplayName("Department")</th>
+                                                        <th>@Html.DisplayName("Designation")</th>
+                                                        <th>@Html.DisplayName("Gender")</th>
+                                                        <th>@Html.DisplayName("Mobile Number")</th>
+                                                        <th>@Html.DisplayName("Action")</th>
+                                                    </tr>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <tr>
+                                                            <td>@Html.DisplayFor(modelItem => item.StaffId)</td>
+                                                            <td>
+                                                                @{var fullName = item.FirstName + " " + item.LastName;
+                                                                    <a href="@Url.Action("profile", "Staff", new { area = "admin", id = item.ApplicationUserId })">@Html.DisplayFor(modelItem => fullName)</a>
+                                                                }
+                                                            </td>
+                                                            <td>@Html.DisplayFor(modelItem => item.UserRoles)</td>
+                                                            <td>@Html.DisplayFor(modelItem => item.DepartmentName)</td>
+                                                            <td>@Html.DisplayFor(modelItem => item.DesignationName)</td>
+                                                            <td>@Html.DisplayFor(modelItem => item.GenderName)</td>
+                                                            <td>@Html.DisplayFor(modelItem => item.Mobile)</td>
+                                                            <td>
+                                                                <a href="@Url.Action("profile", "Staff", new { area = "admin", id = item.ApplicationUserId })">
+                                                                    <span class="fa fa-bars" area-hidden="true"></span>
+                                                                </a>
+                                                                &nbsp;
+                                                                <a href="@Url.Action("Edit", "Staff", new { area = "admin", id = item.ApplicationUserId })">
+                                                                    <span class="fa fa-pencil" area-hidden="true"></span>
+                                                                </a>
+                                                                @*@Html.ActionLink("Profile", "profile", new { id = item.ApplicationUserId }) |*@
+                                                                @*@Html.ActionLink("Edit", "Edit", new { id = item.ApplicationUserId })*@
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <!-- /.box-body -->
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+
+                                <!-- /.tab-pane -->
+                            </div>
+                            <!-- /.tab-content -->
+                        </div>
+                        <!-- /.nav-tabs-custom -->
+                    </div>
+
+                    <!-- /.col -->
+                </div>
+                
+            </section>
+            <!-- /.content -->
+        </div>
+
+    </div>
+    <!-- ./wrapper -->
+</body>
+</html>
+

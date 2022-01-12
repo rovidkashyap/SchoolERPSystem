@@ -1,0 +1,132 @@
+﻿@model SchoolERPSystem.Web.Areas.admin.Models.IncomeViewModel.IncomeViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>Academics</h1>
+            </section>
+
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Items</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+
+
+                            <div class="box-body">
+                                <h4>Are you sure to delete this?</h4>
+                                <br />
+                                <dl class="dl-horizontal">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.IncomeTypeName)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.IncomeTypeName)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Name)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.InvoiceNumber)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.InvoiceNumber)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Date)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Date)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Amount)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Amount)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Document)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Document)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Description)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Description)
+                                    </dd>
+
+                                </dl>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+
+                                <div class="form-actions no-color">
+                                    <div class="row">
+                                        @using (Html.BeginForm())
+                                        {
+                                            @Html.AntiForgeryToken()
+
+                                            <div class="col-md-6">
+                                                <input type="submit" value="Delete" class="btn btn-block btn-danger" />
+                                            </div>
+                                        }
+                                        <div class="col-md-6">
+                                            <button class="btn btn-block btn-primary" onclick="@("window.location.href='" + Url.Action("Index", "Income", new { area = "" }) + "'");">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-footer -->
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    <!-- ./wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+﻿@model IEnumerable<SchoolERPSystem.Web.Areas.admin.Models.FrontOfficeViewModel.VisitorBookViewModel>
+
+
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Visitor Book List</h3>
+
+            <div class="box-tools">
+                <ul class="pagination pagination-sm no-margin pull-right">
+                    <li><a href="#" id="printpdf"><span class="fa fa-file-pdf-o"></span></a></li>
+                    <li><a href="#" onclick="PrintDiv('dvContents')"><span class="fa fa-print"></span></a></li>
+                    <li><a href="#"><span class="fa fa-file-excel-o"></span></a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body" id="dvContents">
+
+            <table class="table table-bordered">
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PurposeName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FullName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.VisitingDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OutTime)
+                    </th>
+
+                    <th style="width: 80px">@Html.DisplayName("Action")</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    using (Html.BeginForm())
+                    {
+                     <tr>
+                         <td>@Html.DisplayFor(modelItem => item.Id) </td>
+                         <td>@Html.DisplayFor(modelItem => item.PurposeName)</td>
+                         <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                         <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                         <td>@Html.DisplayFor(modelItem => item.VisitingDate)</td>
+                         <td>@Html.DisplayFor(modelItem => item.InTime)</td>
+                         <td>@Html.DisplayFor(modelItem => item.OutTime)</td>
+                         <td>
+                            <a href="#">
+                                <span class="fa fa-bars" data-toggle="modal" data-target="#modal-info"></span>
+                            </a>
+                            <span>&nbsp;</span>
+                            <a href="@Url.Action("Index", "VisitorBook", new { id = item.Id })">
+                                <span class="fa fa-pencil" area-hidden="true"></span>
+                            </a>
+                            <span>&nbsp;</span>
+
+                            <a href="@Url.Action("Delete", "VisitorBook", new { id = item.Id })">
+                                <span class="fa fa-remove"></span>
+                            </a>
+                        </td>
+                    </tr>
+                    }
+                }
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+
+   
+
+    <div class="modal modal-info fade" id="modal-info" style="width:100%; height:100%;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Details</h4>
+                </div>
+                <div class="modal-body">
+                    @foreach (var item in Model)
+                    {
+                        using (Html.BeginForm())
+                        {
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.PurposeName)</td>
+                                    <td>@Html.DisplayFor(modeItem => item.PurposeName)</td>
+                                    <td>@Html.DisplayNameFor(model => model.Phone)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                                    <td>@Html.DisplayNameFor(model => model.VisitingDate)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.VisitingDate)</td>
+                                    <td>@Html.DisplayNameFor(model => model.OutTime)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.OutTime)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.FullName)</td>
+                                    <td>@Html.DisplayFor(modeItem => item.FullName)</td>
+                                    <td>@Html.DisplayNameFor(model => model.NoOfPerson)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.NoOfPerson)</td>
+                                    <td>@Html.DisplayNameFor(model => model.InTime)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.InTime)</td>
+                                    <td>@Html.DisplayNameFor(model => model.Note)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Note)</td>
+                                </tr>
+                            </table>
+                        }
+
+                    }
+
+                </div>
+                
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<SchoolERPSystem.Web.Areas.admin.Models.FrontOfficeViewModel.AdmissionEnquiryViewModel>
+
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Admission Enquiry List</h3>
+
+            <div class="box-tools">
+                <ul class="pagination pagination-sm no-margin pull-right">
+                    <li><a href="#" id="printpdf"><span class="fa fa-file-pdf-o"></span></a></li>
+                    <li><a href="#" onclick="PrintDiv('dvContents')"><span class="fa fa-print"></span></a></li>
+                    <li><a href="#"><span class="fa fa-file-excel-o"></span></a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body" id="dvContents">
+
+            <table class="table table-bordered">
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Assigned)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SchoolClassName)
+                    </th>
+
+                    <th style="width: 80px">@Html.DisplayName("Action")</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    using (Html.BeginForm())
+                    {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id) </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NextFollowUpDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Assigned)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelitem => item.SchoolClassName)
+                </td>
+                <td>
+
+                    <span>&nbsp;</span>
+                    <a href="@Url.Action("Index", "Enquiry", new { id = item.Id })">
+                        <span class="fa fa-pencil" area-hidden="true"></span>
+                    </a>
+                    <span>&nbsp;</span>
+
+                    <a href="@Url.Action("Delete", "Enquiry", new { id = item.Id })">
+                        <span class="fa fa-remove"></span>
+                    </a>
+                </td>
+            </tr>
+                    }
+                }
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<SchoolERPSystem.Web.Areas.admin.Models.UserlogViewModel>
+
+@{
+    ViewBag.Title = "User Logs - ERPSchool";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Reports
+                </h1>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">User Logs</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body no-padding">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th style="width: 10px">#</th>
+                                        <th>@Html.DisplayName("User")</th>
+                                        <th>@Html.DisplayName("IP Address")</th>
+                                        <th>@Html.DisplayName("Login Time")</th>
+                                        <th>@Html.DisplayName("User Role")</th>
+                                        <th>@Html.DisplayName("User Agent")</th>
+                                    </tr>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.IPAddress)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.LoginDate)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.MemberRoleName)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.UserAgent)</td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                            <!-- /.box-body -->
+                        </div>
+
+                    </div>
+                    <!-- /.col -->
+                <!-- /.row -->
+            </section>
+            <!-- /.content -->
+        </div>
+
+    </div>
+    <!-- ./wrapper -->
+</body>
+</html>

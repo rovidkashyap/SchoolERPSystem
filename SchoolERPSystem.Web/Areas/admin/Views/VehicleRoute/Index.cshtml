@@ -1,0 +1,75 @@
+﻿@model SchoolERPSystem.Web.Areas.admin.Models.TransportViewModel.VehicleRouteViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Transport
+            </h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="col-md-12">
+                            <div class="box box-info">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Assign Vehicle Routes</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <!-- form start -->
+
+                                <form class="form-horizontal">
+                                    <div class="box-body">
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.RouteId, htmlAttributes: new { @class = "control-label" })
+                                            
+                                                @Html.DropDownList("RouteId", (SelectList)ViewBag.RouteId, "Select", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.RouteId, "", new { @class = "text-danger" })
+                                           
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.VehicleId, htmlAttributes: new { @class = "control-label" })
+                                            
+                                                @Html.DropDownList("VehicleId", (SelectList)ViewBag.VehicleId, "Select", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.VehicleId, "", new { @class = "text-danger" })
+                                           
+                                        </div>
+
+
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                        <input type="submit" value="Save" class="btn btn-info pull-right" />
+                                        <!-- /.box-footer -->
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="col-md-8">
+                    @{ Html.RenderAction("List", "VehicleRoute", new { area = "Admin" }); }
+                </div>
+            </div>
+
+        </section>
+        <!-- /.content -->
+    </div>
+
+

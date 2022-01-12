@@ -1,0 +1,105 @@
+﻿@model SchoolERPSystem.Web.Areas.admin.Models.FrontOfficeViewModel.PostalReceiveViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Front Office
+            </h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="col-md-12">
+                            <div class="box box-info">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Add Postal Receive</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <!-- form start -->
+
+                                <form class="form-horizontal">
+                                    <div class="box-body">
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.FromTitle, htmlAttributes: new { @class = "control-label" })
+                                            @Html.EditorFor(model => model.FromTitle, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.FromTitle, "", new { @class = "text-danger" })
+                                            
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.ReferenceNo, htmlAttributes: new { @class = "control-label" })
+                                            @Html.EditorFor(model => model.ReferenceNo, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ReferenceNo, "", new { @class = "text-danger" })
+                                           
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label" })
+                                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                            
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "control-label" })
+                                            @Html.EditorFor(model => model.Note, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
+                                            
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.ToTitle, htmlAttributes: new { @class = "control-label" })
+                                            @Html.EditorFor(model => model.ToTitle, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ToTitle, "", new { @class = "text-danger" })
+                                            
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label" })
+                                            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                                            
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.DocumentPath, htmlAttributes: new { @class = "control-label" })
+                                            @Html.EditorFor(model => model.DocumentPath, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.DocumentPath, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                        <input type="submit" value="Save" class="btn btn-info pull-right" />
+                                        <!-- /.box-footer -->
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="col-md-8">
+                    @{ Html.RenderAction("List", "PostalReceive", new { area = "Admin" }); }
+                </div>
+            </div>
+
+        </section>
+        <!-- /.content -->
+    </div>
+
+

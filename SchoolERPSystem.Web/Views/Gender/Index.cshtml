@@ -1,0 +1,55 @@
+﻿@model IEnumerable<SchoolERPSystem.Web.Models.DependencyViewModels.GenderViewModel>
+
+
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">Gender List</h3>
+
+        <div class="box-tools">
+            <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="#" id="printpdf"><span class="fa fa-file-pdf-o"></span></a></li>
+                <li><a href="#" onclick="PrintDiv('dvContents')"><span class="fa fa-print"></span></a></li>
+                <li><a href="#"><span class="fa fa-file-excel-o"></span></a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body" id="dvContents">
+
+        <table class="table table-bordered">
+            <tr>
+                <th style="width: 10px">#</th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+
+                <th style="width: 60px">@Html.DisplayName("Action")</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                using (Html.BeginForm())
+                {
+                    <tr>
+                        <td> @Html.DisplayFor(modelItem => item.Id) </td>
+                        <td> @Html.DisplayFor(modelItem => item.Name) </td>
+
+                        <td>
+                            <a href="@Url.Action("Create", "Gender", new { id = item.Id })">
+                                <span class="fa fa-pencil" area-hidden="true"></span>
+                            </a>
+                            <span>&nbsp;</span>
+
+                            <a href="@Url.Action("Delete", "Gender", new { id = item.Id })">
+                                <span class="fa fa-remove"></span>
+                            </a>
+
+                            @*<input type="submit" value="delete" onclick="return confirm('Are you sure you want to delete record with ID = @item.Id');" />
+                                <span class="fa fa-remove"></span>*@
+
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+    <!-- /.box-body -->
+</div>
+

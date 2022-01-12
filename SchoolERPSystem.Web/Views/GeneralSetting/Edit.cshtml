@@ -1,0 +1,144 @@
+﻿@model SchoolERPSystem.Web.Models.GeneralSettingViewModel.GeneralSettingViewModel
+
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>$(document).ajaxStart(function () { Pace.restart(); });</script>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Human Resource
+        </h1>
+
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Basic Information</h3>
+                <div class="box-tools pull-right">
+
+                </div>
+            </div>
+            <div class="box-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <!-- Basic Details Section -->
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.Id)
+                            <!-- School Name -->
+                            <div class="col-lg-3 col-md-3 form-group">
+                                @Html.LabelFor(model => model.SchoolName, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.SchoolName, new { htmlAttributes = new { @class = "form-control", @requried = "required" } })
+                                @Html.ValidationMessageFor(model => model.SchoolName, "", new { @class = "text-danger" })
+                            </div>
+                            <!-- School Code -->
+                            <div class="col-lg-3 col-md-3 form-group">
+                                @Html.LabelFor(model => model.SchoolCode, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.SchoolCode, new { htmlAttributes = new { @class = "form-control", @requried = "required" } })
+                                @Html.ValidationMessageFor(model => model.SchoolCode, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <!-- First Name -->
+                            <div class="col-lg-3 col-md-3 form-group">
+                                @Html.LabelFor(model => model.SchoolAddress, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.SchoolAddress, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.SchoolAddress, "", new { @class = "text-danger" })
+                            </div>
+                            <!-- Phone Number 1 -->
+                            <div class="col-lg-3 col-md-3 form-group">
+                                @Html.LabelFor(model => model.PhoneNumber1, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.PhoneNumber1, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.PhoneNumber1, "", new { @class = "text-danger" })
+
+                            </div>
+                            <!-- Phone Number 2 -->
+                            <div class="col-lg-3 col-md-3 form-group">
+                                @Html.LabelFor(model => model.PhoneNumber2, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.PhoneNumber2, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PhoneNumber2, "", new { @class = "text-danger" })
+                            </div>
+                            <!-- School Email -->
+                            <div class="col-lg-3 col-md-3 form-group">
+                                @Html.LabelFor(model => model.SchoolEmail, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.SchoolEmail, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SchoolEmail, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <!-- Session Name -->
+                            <div class="col-lg-3 col-md-3 form-group">
+                                <label>Session Name *</label>
+                                @Html.DropDownList("SessionId", (SelectList)ViewBag.SessionId, "-- Select --", new { @class = "form-control", @required = "required" })
+                            </div>
+                            <!-- Timezone Name -->
+                            <div class="col-lg-3 col-md-3 form-group">
+                                <label>Timezone *</label>
+                                @Html.DropDownList("TimezoneId", (SelectList)ViewBag.TimezoneId, "-- Select --", new { @class = "form-control", @required = "required" })
+                            </div>
+                            <!-- Language Name -->
+                            <div class="col-lg-3 col-md-3 form-group">
+                                <label>Language *</label>
+                                @Html.DropDownList("LanguageId", (SelectList)ViewBag.LanguageId, "-- Select --", new { @class = "form-control", @required = "required" })
+                            </div>
+
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            
+                            <!-- Phone Number -->
+                            <div class="col-lg-3 col-md-3 form-group">
+                                @Html.LabelFor(model => model.SessionStartMonth, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.SessionStartMonth, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SessionStartMonth, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <!-- Emergency Contact Number -->
+                            <div class="col-lg-3 col-md-3 form-group">
+                                <label>Currency Name *</label>
+                                @Html.DropDownList("CurrencyId", (SelectList)ViewBag.CurrencyId, "-- Select --", new { @class = "form-control", @required = "required" })
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <!-- Current Address -->
+                            <div class="col-lg-6 col-md-6 form-group">
+                                @Html.LabelFor(model => model.CurrencySymbol, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.CurrencySymbol, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CurrencySymbol, "", new { @class = "text-danger" })
+                            </div>
+                            <!-- Permanent Address -->
+                            <div class="col-lg-6 col-md-6 form-group">
+                                @Html.LabelFor(model => model.FeesDueDays, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.FeesDueDays, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.FeesDueDays, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Basic Details Section -->
+
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <input type="submit" class="btn btn-info pull-right" value="Save" />
+                    </div>
+                }
+            </div>
+            <!-- /.box -->
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+
+

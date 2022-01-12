@@ -1,0 +1,84 @@
+﻿@model SchoolERPSystem.Web.Models.DependencyViewModels.MaritalStatusViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>Human Resource</h1>
+            </section>
+
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Gender</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+
+
+                            <div class="box-body">
+                                <h4>Are you sure to delete this?</h4>
+                                <br />
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Name)
+                                        </td>
+                                    </tr>
+                                    
+                                </table>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+
+                                <div class="form-actions no-color">
+                                    <div class="row">
+                                        @using (Html.BeginForm())
+                                        {
+                                            @Html.AntiForgeryToken()
+
+                                            <div class="col-md-6">
+                                                <input type="submit" value="Delete" class="btn btn-block btn-danger" />
+                                            </div>
+                                        }
+                                        <div class="col-md-6">
+                                            <button class="btn btn-block btn-primary" onclick="@("window.location.href='" + Url.Action("Create", "Gender", new { area = "" }) + "'");">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-footer -->
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    <!-- ./wrapper -->
+
+</body>
+</html>

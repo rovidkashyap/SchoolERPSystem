@@ -1,0 +1,78 @@
+﻿@model IEnumerable<SchoolERPSystem.Web.Areas.admin.Models.HostelViewModel.HostelRoomViewModel>
+
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Hostel Room List</h3>
+
+            <div class="box-tools">
+                <ul class="pagination pagination-sm no-margin pull-right">
+                    <li><a href="#" id="printpdf"><span class="fa fa-file-pdf-o"></span></a></li>
+                    <li><a href="#" onclick="PrintDiv('dvContents')"><span class="fa fa-print"></span></a></li>
+                    <li><a href="#"><span class="fa fa-file-excel-o"></span></a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body" id="dvContents">
+
+            <table class="table table-bordered">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RoomNumberOrName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Hostel)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RoomType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NoOfBed)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CostPerBed)
+                    </th>
+
+
+                    <th style="width: 80px">@Html.DisplayName("Action")</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    using (Html.BeginForm())
+                    {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomNumberOrName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hostel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoOfBed)
+                </td>
+                <td>
+                    &#8377; @Html.DisplayFor(modelItem => item.CostPerBed)
+                </td>
+
+                <td>
+                    <span>&nbsp;</span>
+                    <a href="@Url.Action("Index", "HostelRoom", new { id = item.Id })">
+                        <span class="fa fa-pencil" area-hidden="true"></span>
+                    </a>
+                    <span>&nbsp;</span>
+
+                    <a href="@Url.Action("Delete", "HostelRoom", new { id = item.Id })">
+                        <span class="fa fa-remove"></span>
+                    </a>
+
+                </td>
+            </tr>
+                    }
+                }
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>

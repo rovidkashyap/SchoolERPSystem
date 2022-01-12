@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{28AE1E65-5577-40B5-97D2-9FB6B19FB9AB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SchoolERPSystem.Service</RootNamespace>
+    <AssemblyName>SchoolERPSystem.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AcademicsService\Interfaces\IClassSectionService.cs" />
+    <Compile Include="AcademicsService\Interfaces\ISchoolClassService.cs" />
+    <Compile Include="AcademicsService\Interfaces\ISectionService.cs" />
+    <Compile Include="AcademicsService\Interfaces\ISubjectService.cs" />
+    <Compile Include="AcademicsService\Services\ClassSectionService.cs" />
+    <Compile Include="AcademicsService\Services\SchoolClassService.cs" />
+    <Compile Include="AcademicsService\Services\SectionService.cs" />
+    <Compile Include="AcademicsService\Services\SubjectService.cs" />
+    <Compile Include="Common\EntityService.cs" />
+    <Compile Include="Common\IEntityService.cs" />
+    <Compile Include="Common\IService.cs" />
+    <Compile Include="DependenciesService\Interfaces\GeneralSettingInterfaces\ICurrencyService.cs" />
+    <Compile Include="DependenciesService\Interfaces\GeneralSettingInterfaces\IGeneralSettingService.cs" />
+    <Compile Include="DependenciesService\Interfaces\GeneralSettingInterfaces\ILanguageService.cs" />
+    <Compile Include="DependenciesService\Interfaces\GeneralSettingInterfaces\ISessionService.cs" />
+    <Compile Include="DependenciesService\Interfaces\GeneralSettingInterfaces\ITimezoneService.cs" />
+    <Compile Include="DependenciesService\Interfaces\IContractTypeService.cs" />
+    <Compile Include="DependenciesService\Interfaces\IDepartmentService.cs" />
+    <Compile Include="DependenciesService\Interfaces\IDesignationService.cs" />
+    <Compile Include="DependenciesService\Interfaces\IGenderService.cs" />
+    <Compile Include="DependenciesService\Interfaces\IMaritalStatusService.cs" />
+    <Compile Include="DependenciesService\Interfaces\StudentInterfaces\IBloodGroupService.cs" />
+    <Compile Include="DependenciesService\Interfaces\StudentInterfaces\ICategoryService.cs" />
+    <Compile Include="DependenciesService\Interfaces\StudentInterfaces\IStudentHouseService.cs" />
+    <Compile Include="DependenciesService\Services\ContractTypeService.cs" />
+    <Compile Include="DependenciesService\Services\DepartmentService.cs" />
+    <Compile Include="DependenciesService\Services\DesignationService.cs" />
+    <Compile Include="DependenciesService\Services\GenderService.cs" />
+    <Compile Include="DependenciesService\Services\GeneralSettingService\CurrencyService.cs" />
+    <Compile Include="DependenciesService\Services\GeneralSettingService\GeneralSettingService.cs" />
+    <Compile Include="DependenciesService\Services\GeneralSettingService\LanguageService.cs" />
+    <Compile Include="DependenciesService\Services\GeneralSettingService\SessionService.cs" />
+    <Compile Include="DependenciesService\Services\GeneralSettingService\TimezoneService.cs" />
+    <Compile Include="DependenciesService\Services\MaritalStatusService.cs" />
+    <Compile Include="DependenciesService\Services\StudentService\BloodGroupService.cs" />
+    <Compile Include="DependenciesService\Services\StudentService\CategoryService.cs" />
+    <Compile Include="DependenciesService\Services\StudentService\StudentHouseService.cs" />
+    <Compile Include="ExpenseService\Interfaces\IExpenseService.cs" />
+    <Compile Include="ExpenseService\Interfaces\IExpenseTypeService.cs" />
+    <Compile Include="ExpenseService\Services\ExpenseService.cs" />
+    <Compile Include="ExpenseService\Services\ExpenseTypeService.cs" />
+    <Compile Include="HostelService\Interfaces\IHostelRoomService.cs" />
+    <Compile Include="HostelService\Interfaces\IHostelService.cs" />
+    <Compile Include="HostelService\Interfaces\IHostelTypeService.cs" />
+    <Compile Include="HostelService\Interfaces\IRoomTypeService.cs" />
+    <Compile Include="HostelService\Services\HostelRoomService.cs" />
+    <Compile Include="HostelService\Services\HostelService.cs" />
+    <Compile Include="HostelService\Services\HostelTypeService.cs" />
+    <Compile Include="HostelService\Services\RoomTypeService.cs" />
+    <Compile Include="IncomeService\Interfaces\IIncomeService.cs" />
+    <Compile Include="IncomeService\Interfaces\IIncomeTypeService.cs" />
+    <Compile Include="IncomeService\Services\IncomeService.cs" />
+    <Compile Include="IncomeService\Services\IncomeTypeService.cs" />
+    <Compile Include="Inventory\Interfaces\IItemCategoryService.cs" />
+    <Compile Include="Inventory\Interfaces\IItemService.cs" />
+    <Compile Include="Inventory\Interfaces\IItemStockService.cs" />
+    <Compile Include="Inventory\Interfaces\IItemStoreService.cs" />
+    <Compile Include="Inventory\Interfaces\IItemSupplierService.cs" />
+    <Compile Include="Inventory\Services\ItemCategoryService.cs" />
+    <Compile Include="Inventory\Services\ItemService.cs" />
+    <Compile Include="Inventory\Services\ItemStockService.cs" />
+    <Compile Include="Inventory\Services\ItemStoreService.cs" />
+    <Compile Include="Inventory\Services\ItemSupplierService.cs" />
+    <Compile Include="IUserLogService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReceptionService\Interfaces\IAdmissionEnquiryService.cs" />
+    <Compile Include="ReceptionService\Interfaces\IComplaintService.cs" />
+    <Compile Include="ReceptionService\Interfaces\IComplaintTypeService.cs" />
+    <Compile Include="ReceptionService\Interfaces\IPhoneCallLogService.cs" />
+    <Compile Include="ReceptionService\Interfaces\IPostalDispatchService.cs" />
+    <Compile Include="ReceptionService\Interfaces\IPostalReceiveService.cs" />
+    <Compile Include="ReceptionService\Interfaces\IPurposeService.cs" />
+    <Compile Include="ReceptionService\Interfaces\IReferencesService.cs" />
+    <Compile Include="ReceptionService\Interfaces\ISourceService.cs" />
+    <Compile Include="ReceptionService\Interfaces\IVisitorDetailsService.cs" />
+    <Compile Include="ReceptionService\Services\AdmissionEnquiryService.cs" />
+    <Compile Include="ReceptionService\Services\ComplaintService.cs" />
+    <Compile Include="ReceptionService\Services\ComplaintTypeService.cs" />
+    <Compile Include="ReceptionService\Services\PhoneCallLogService.cs" />
+    <Compile Include="ReceptionService\Services\PostalDispatchService.cs" />
+    <Compile Include="ReceptionService\Services\PostalReceiveService.cs" />
+    <Compile Include="ReceptionService\Services\PurposeService.cs" />
+    <Compile Include="ReceptionService\Services\ReferencesService.cs" />
+    <Compile Include="ReceptionService\Services\SourceService.cs" />
+    <Compile Include="ReceptionService\Services\VisitorDetailsService.cs" />
+    <Compile Include="StaffModelService\Interfaces\IStaffAttendanceService.cs" />
+    <Compile Include="StaffModelService\Interfaces\IStaffBankDetailsService.cs" />
+    <Compile Include="StaffModelService\Interfaces\IStaffDocumentsService.cs" />
+    <Compile Include="StaffModelService\Interfaces\IStaffLeavesService.cs" />
+    <Compile Include="StaffModelService\Interfaces\IStaffPayrollService.cs" />
+    <Compile Include="StaffModelService\Interfaces\IStaffProfileImageService.cs" />
+    <Compile Include="StaffModelService\Interfaces\IStaffProfileService.cs" />
+    <Compile Include="StaffModelService\Services\StaffAttendanceService.cs" />
+    <Compile Include="StaffModelService\Services\StaffBankDetailsService.cs" />
+    <Compile Include="StaffModelService\Services\StaffDocumentsService.cs" />
+    <Compile Include="StaffModelService\Services\StaffLeavesService.cs" />
+    <Compile Include="StaffModelService\Services\StaffPayrollService.cs" />
+    <Compile Include="StaffModelService\Services\StaffProfileImageService.cs" />
+    <Compile Include="StaffModelService\Services\StaffProfileService.cs" />
+    <Compile Include="StudentModelService\Interfaces\IStudentAdmissionService.cs" />
+    <Compile Include="StudentModelService\Interfaces\IStudentAuthenticationService.cs" />
+    <Compile Include="StudentModelService\Interfaces\IStudentBankingService.cs" />
+    <Compile Include="StudentModelService\Interfaces\IStudentDocumentService.cs" />
+    <Compile Include="StudentModelService\Interfaces\IStudentHostelService.cs" />
+    <Compile Include="StudentModelService\Interfaces\IStudentTransportService.cs" />
+    <Compile Include="StudentModelService\Services\StudentAdmissionService.cs" />
+    <Compile Include="StudentModelService\Services\StudentAuthenticationService.cs" />
+    <Compile Include="StudentModelService\Services\StudentBankingService.cs" />
+    <Compile Include="StudentModelService\Services\StudentDocumentService.cs" />
+    <Compile Include="StudentModelService\Services\StudentHostelService.cs" />
+    <Compile Include="StudentModelService\Services\StudentTransportService.cs" />
+    <Compile Include="TransportService\Interfaces\IRouteService.cs" />
+    <Compile Include="TransportService\Interfaces\IVehicleRouteService.cs" />
+    <Compile Include="TransportService\Interfaces\IVehicleService.cs" />
+    <Compile Include="TransportService\Services\RouteService.cs" />
+    <Compile Include="TransportService\Services\VehicleRouteService.cs" />
+    <Compile Include="TransportService\Services\VehicleService.cs" />
+    <Compile Include="UserLogService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SchoolERPSystem.Models\SchoolERPSystem.Models.csproj">
+      <Project>{2727389B-415E-411F-87CE-6BC70AC84DC8}</Project>
+      <Name>SchoolERPSystem.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SchoolERPSystem.Repository\SchoolERPSystem.Repository.csproj">
+      <Project>{F002F97E-767D-44BC-A4A2-7080D9D84A3D}</Project>
+      <Name>SchoolERPSystem.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
+</Project>
